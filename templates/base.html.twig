@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Welcome!{% endblock %}</title>
+
+  <link rel="icon" href="">
+  {% block stylesheets %}
+  {{ ux_controller_link_tags() }}
+  {% endblock %}
+
+  {% block javascripts %}
+  {% block importmap %}{{ importmap('app') }}{% endblock %}
+  {% endblock %}
+</head>
+
+<body>
+  <div class="container">
+    <header
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <a href="" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+          {% if app.user %}
+          <i class="fas fa-user-check"></i>
+          Bienvenue {{ app.user.userIdentifier }},
+          {% endif %}
+        </svg>
+      </a>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="{{ path('app_home') }}" class="nav-link px-2 link-dark">Accueil</a></li>
+        <li><a href="{{ path('app_client_index') }}" class="nav-link px-2 link-dark">Client</a></li>
+        <li><a href="{{ path('app_abonnement_index') }}" class="nav-link px-2 link-dark">Abonnement</a></li>
+        <li><a href="{{ path('app_categorie_index') }}" class="nav-link px-2 link-dark">Categorie</a></li>
+        <li><a href="{{ path('app_chaine_index') }}" class="nav-link px-2 link-dark">Chaine</a></li>
+        <li><a href="{{ path('app_type_chaine_index') }}" class="nav-link px-2 link-dark">TypeChaine</a></li>
+
+      </ul>
+
+      <div class="col-md-3 text-end">
+        <a href="{{ path('app_user_index') }}" class="btn btn-primary position-relative me-2">
+          <i class="fas fa-user-lock"></i> PageAdmin
+          <span
+            class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+          </span>
+        </a>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-success me-2" data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop">
+          <i class="fas fa-power-off"></i> Déconnecter
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Déconnection</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                {% if app.user %}
+                <i class="fas fa-user-check" style="color: rgb(0, 82, 82);" width="30" height="auto"></i> {{
+                app.user.userIdentifier }}, Vous allez être déconnecter !!
+                {% endif %}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Annuler</button>
+                <a href="{{ path('app_logout') }}" class="btn btn-danger">Continuer</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div class="container-fluid">
+    {% block body %}{% endblock %}
+  </div>
+  <div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <div class="col-md-4 d-flex align-items-center">
+        <a href="" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+          <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+        </a>
+        <span class="text-muted">&copy; 2021 By Johann, </span>
+      </div>
+  
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/><i class="fab fa-twitter"></i></svg></a></li>
+        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/><i class="fab fa-facebook"></i></svg></a></li>
+        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/><i class="fab fa-instagram"></i></svg></a></li>
+      </ul>
+    </footer>
+  </div>
+</body>
+
+</html>

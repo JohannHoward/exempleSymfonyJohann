@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chaine{% endblock %}
+
+{% block body %}
+<h1> La chaine {{ chaine.Nom }}</h1>
+<div class="shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="container">
+        <table class="table table-striped table-hover ">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ chaine.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ chaine.Nom }}</td>
+                </tr>
+                <tr>
+                    <th>Numero</th>
+                    <td>{{ chaine.Numero }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container ">
+        <div class="row mt-4">
+            <div class="col">
+                {{ include('chaine/_delete_form.html.twig') }}
+            </div>
+            <div class="col">
+                <a href="{{ path('app_chaine_edit', {'id': chaine.id}) }}"
+                    class="w-100 mb-2 btn btn-lg rounded-4 btn-success"><i class="fas fa-edit"></i> Modifier</a>
+            </div>
+            <div class="col">
+                <a href="{{ path('app_chaine_index') }}" class="w-100 mb-2 btn btn-lg rounded-4 btn-secondary"><i
+                        class="fa fa-list"></i> Liste</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

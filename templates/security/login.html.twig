@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset ('css/login.css') }}">
+    <title>Page de connexion</title>
+</head>
+<body>
+    <form method="post">
+        {% if error %}
+        <p style="color: red;background-color: aliceblue;">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+        {% endif %}
+        <div class="box">
+            <div class="form">
+                <h2>Connectez-vous</h2>
+                <div class="inputBox">
+                    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+                    <span>Nom utilisateur</span>
+                    <i></i>
+                </div>
+                <div class="inputBox">
+                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                    <span>Mot de passe</span>
+                    <i></i>
+                </div>
+                <div class="links">
+                    <a href="{{ path('app_register') }}">Créer un compte</a>
+                </div>
+                <input type="submit" value="Valider">
+            </div>
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    </form>
+</body>
+

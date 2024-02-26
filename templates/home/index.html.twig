@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page d'acceuil{% endblock %}
+
+{% block body %}
+<main>
+    <h1 class="visually-hidden">Heroes examples</h1>
+  
+    <div class="px-4 py-5 my-5 text-center">
+        <img class="d-block mx-auto mb-4 shadow p-3 mb-5 bg-body rounded" src="{{ asset('image/Canal+.jpg') }}" alt="" width="200" height="150">
+      <h1 class="display-5 fw-bold">Bienvenue chez nous</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Cette application a été concus pour les abonnements que nous recevons par les clients, si vous êtes connectés ici c'est que vous avez l'autorisation d'utiliser ce logiciel et que vous êtes membre des travailleurs chez CANAL + <br> Merci de bien respecter la règle d'utilisation.</p>
+      </div>
+    </div>
+</main>
+{% endblock %}

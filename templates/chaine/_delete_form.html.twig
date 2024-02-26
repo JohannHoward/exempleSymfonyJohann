@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_chaine_delete', {'id': chaine.id}) }}" onsubmit="return confirm('Etes-vous sure de vouloir supprimer cette chaine?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ chaine.id) }}">
+    <button class="w-100 mb-2 btn btn-lg rounded-4 btn-danger"><i class="fas fa-trash"></i> Supprimer</button>
+</form>

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des types de chaine{% endblock %}
+
+{% block body %}
+    <h1>Liste des types de chaine</h1>
+<div class="shadow-lg p-3 mb-5 bg-body rounded"> <br>
+    <a href="{{ path('app_type_chaine_new') }}" class="btn btn-primary">Nouveau type chaine <i class="fas fa-plus"></i></a> <br> <br>
+    <div class="container">
+        <form action="{{ path ('app_type_chaine_index') }}" method="get">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Recherche" name="recherche">
+                <button class="btn btn-success" type="submit">Rechercher</button>
+                <a href="{{ path('app_type_chaine_index') }}" class="btn btn-outline-primary">Actualiser</a>
+            </div>
+        </form> <br> 
+        <table class="table table-striped table-hover text-center">
+            <thead>
+                <tr class="table-active">
+                    <th>Id</th>
+                    <th>Type</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for type_chaine in type_chaines %}
+                <tr >
+                    <td>{{ type_chaine.id }}</td>
+                    <td>{{ type_chaine.Type }}</td>
+                    <td>
+                        <a href="{{ path('app_type_chaine_show', {'id': type_chaine.id}) }}" class="btn btn-warning"><i class="far fa-eye"></i></a>
+                        <a href="{{ path('app_type_chaine_edit', {'id': type_chaine.id}) }}" class="btn btn-success"><i class="far fa-edit"></i></a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4">Pas d'enregistrement</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
